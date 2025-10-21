@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>独学でエンジニアになる！実践的キャリア構築セミナー</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: 'base',
+        securityLevel: 'loose',
+        fontFamily: 'sans-serif',
+        themeVariables: {
+          primaryColor: '#4CAF50',
+          primaryTextColor: '#fff',
+          primaryBorderColor: '#9575CD',
+          lineColor: '#009688',
+          secondaryColor: '#FFC107',
+          tertiaryColor: '#f0f0f0'
+        },
+        flowchart: {
+          curve: 'basis'
+        }
+      });
+    });
+  </script>
+  <style>
+    :root {
+      --main-color: #4CAF50;
+      --accent-color-1: #9575CD;
+      --accent-color-2: #FFC107;
+      --accent-color-3: #009688;
+      --accent-color-4: #E91E63;
+      --background-color: #FAFAFA;
+      --text-color: #333;
+      --light-text-color: #FFF;
+      --border-color: #E0E0E0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h1, h2, h3, h4 {
+      margin-bottom: 0.8em;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      text-align: center;
+      border-bottom: 3px solid var(--accent-color-2);
+      padding-bottom: 15px;
+      color: var(--main-color);
+    }
+
+    h2 {
+      font-size: 1.8em;
+      color: var(--accent-color-3);
+      border-left: 5px solid var(--accent-color-3);
+      padding-left: 15px;
+      margin-top: 2em;
+      margin-bottom: 1em;
+    }
+
+    h3 {
+      font-size: 1.4em;
+      color: var(--accent-color-1);
+      margin-top: 1.5em;
+      margin-bottom: 0.8em;
+    }
+
+    strong {
+      color: var(--accent-color-4);
+      font-weight: 600;
+    }
+
+    em {
+      color: var(--accent-color-3);
+      font-style: italic;
+    }
+
+    p {
+      margin-bottom: 1em;
+      line-height: 1.8;
+    }
+
+    ul, ol {
+      padding-left: 25px;
+      margin-bottom: 1em;
+    }
+
+    li {
+      margin-bottom: 0.8em;
+      line-height: 1.8;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color-3) 100%);
+      color: var(--light-text-color);
+      padding: 50px 30px;
+      text-align: center;
+    }
+
+    .hero-section h1 {
+      color: var(--light-text-color);
+      border-bottom: 3px solid var(--accent-color-2);
+      font-size: 2.5em;
+      margin-bottom: 15px;
+    }
+
+    .hero-section p {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+
+    .hero-tagline {
+      font-size: 1.4em;
+      margin-top: 20px;
+      color: var(--accent-color-2);
+      font-weight: bold;
+    }
+
+    .section {
+      padding: 40px 30px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .benefit-card {
+      background-color: #f9f9f9;
+      border-left: 4px solid var(--accent-color-2);
+      padding: 20px;
+      border-radius: 4px;
+    }
+
+    .benefit-card h4 {
+      color: var(--accent-color-2);
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+
+    .benefits-section ul li::before {
+      content: '✅ ';
+      color: var(--main-color);
+      font-weight: bold;
+      display: inline-block;
+      width: 1.2em;
+      margin-left: -1.2em;
+    }
+
+    .process-section ol {
+      list-style: none;
+      counter-reset: step-counter;
+      padding-left: 0;
+    }
+
+    .process-section li {
+      counter-increment: step-counter;
+      margin-bottom: 1.5em;
+      position: relative;
+      padding-left: 50px;
+      background-color: #f9f9f9;
+      padding: 20px;
+      padding-left: 70px;
+      border-radius: 4px;
+    }
+
+    .process-section li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 15px;
+      top: 20px;
+      width: 40px;
+      height: 40px;
+      background-color: var(--accent-color-2);
+      color: var(--text-color);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .quote {
+      background-color: #f0f0f0;
+      border-left: 5px solid var(--accent-color-1);
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+      font-style: italic;
+      color: #555;
+    }
+
+    .quote-author {
+      text-align: right;
+      margin-top: 10px;
+      font-style: normal;
+      color: var(--accent-color-3);
+      font-weight: 600;
+      font-size: 0.95em;
+    }
+
+    .quote-meta {
+      font-size: 0.85em;
+      color: #888;
+      margin-top: 5px;
+    }
+
+    .proof-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .proof-item {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 4px;
+      border-top: 4px solid var(--accent-color-1);
+    }
+
+    .proof-item h4 {
+      color: var(--accent-color-1);
+      margin-bottom: 10px;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .testimonial-card {
+      background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+      border-left: 5px solid var(--accent-color-2);
+      padding: 25px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .testimonial-card h4 {
+      color: var(--accent-color-4);
+      margin-bottom: 5px;
+      font-size: 1.1em;
+    }
+
+    .testimonial-content {
+      background-color: white;
+      padding: 15px;
+      border-radius: 4px;
+      margin: 10px 0;
+      border-left: 3px solid var(--accent-color-3);
+      line-height: 1.9;
+    }
+
+    .testimonial-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .profile-badge {
+      background-color: var(--accent-color-1);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.85em;
+    }
+
+    .faq-section dl {
+      margin-top: 20px;
+    }
+
+    .faq-section dt {
+      font-weight: 600;
+      color: var(--accent-color-3);
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+    }
+
+    .faq-section dd {
+      margin-left: 20px;
+      margin-bottom: 1em;
+      line-height: 1.8;
+    }
+
+    .mermaid {
+      margin: 30px 0;
+      display: flex;
+      justify-content: center;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 4px;
+    }
+
+    .highlight-box {
+      background-color: #fff3cd;
+      border-left: 5px solid var(--accent-color-2);
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+
+    .highlight-box strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .insight-card {
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      color: white;
+    }
+
+    .insight-card h4 {
+      color: #FFC107;
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+
+    .insight-card p {
+      font-size: 0.95em;
+      line-height: 1.7;
+    }
+
+    .stat-box {
+      background-color: #f0f0f0;
+      border: 2px solid var(--accent-color-2);
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 4px;
+      font-weight: 600;
+      color: var(--accent-color-4);
+    }
+
+    @media (max-width: 768px) {
+      .benefits-grid,
+      .proof-section,
+      .insight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 1.8em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      .hero-section {
+        padding: 30px 20px;
+      }
+
+      .section {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1>💡 独学でエンジニアに転身する</h1>
+      <p>実践的なキャリア構築と学習ロードマップ</p>
+      <div class="hero-tagline">「座学だけでは一生100点にならない」— 実経験を積んで確実にスキルを磨く方法</div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section benefits-section">
+      <h2>🎯 このセミナーから得られること</h2>
+
+      <h3>📚 主な学習内容</h3>
+      <ul>
+        <li>独学でエンジニアになるための<strong>具体的なロードマップ</strong></li>
+        <li>SEOやセキュリティなど<strong>実務に必要な基礎知識</strong></li>
+        <li><strong>プログラミング言語選定</strong>の基準と選び方</li>
+        <li>独立・案件開発の<strong>現実的なステップ</strong></li>
+        <li>ネット情報の玉石混淆から<strong>質の高い学習情報を見分ける方法</strong></li>
+      </ul>
+
+      <h3>💪 具体的にできるようになること</h3>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h4>🛠️ スキル習得</h4>
+          <p>実務レベルのプログラミング知識と技術の習得方法が明確になる</p>
+        </div>
+        <div class="benefit-card">
+          <h4>🎯 キャリア設計</h4>
+          <p>30代からでも遅くない、エンジニア転身の現実的なパスが見える</p>
+        </div>
+        <div class="benefit-card">
+          <h4>🚀 独立への道</h4>
+          <p>独学から独立案件開発まで、段階的に進むための方策を学べる</p>
+        </div>
+        <div class="benefit-card">
+          <h4>🧠 学習戦略</h4>
+          <p>挫折を避け、継続的に学習するためのマインドセットと具体的方法</p>
+        </div>
+      </div>
+
+      <h3>✨ セミナー参加者からの変化</h3>
+      <p>参加者からは「<strong>自分も頑張らなきゃ</strong>という前向きな気づき」や「<strong>転職のリアルな話が聞けた</strong>」といった感想が多く聞かれています。また、「<strong>毎日勉強を継続</strong>することの重要性」が実感できるため、学習継続のモチベーション向上に繋がっています。</p>
+    </section>
+
+    <!-- Process Flow -->
+    <section class="section process-section">
+      <h2>➡️ 独学エンジニア成功のステップ</h2>
+
+      <h3>具体的なプロセス</h3>
+      <ol>
+        <li>
+          <strong>基礎知識と学習目標の明確化</strong>
+          <p>エンジニアになるとは何か、どの言語を選ぶか、目的を明確にすることが肝心。闇雲な学習は挫折の元。</p>
+        </li>
+        <li>
+          <strong>段階的な学習（座学 → 実践）</strong>
+          <p>座学だけでは100点にはならない。早い段階から実際のプロジェクトや案件に取り組むことで、実務スキルが身につく。</p>
+        </li>
+        <li>
+          <strong>SEO・セキュリティなど実務知識の習得</strong>
+          <p>プログラミングスキルだけでなく、SEOやセキュリティ、仕組みの理解が重要。これらが案件対応能力を左右する。</p>
+        </li>
+        <li>
+          <strong>毎日の継続学習と実装経験</strong>
+          <p>講師自身も現在進行形で毎日学習を継続している。継続こそが確実なスキル向上の道。</p>
+        </li>
+        <li>
+          <strong>独立・案件開発への移行</strong>
+          <p>ほぼ1人での案件開発を経験。スキルと実績を積み重ねることで、独立・フリーランスとしての道が開ける。</p>
+        </li>
+      </ol>
+
+      <pre class="mermaid">
+graph TD
+    A["🎯 目標・目的の明確化<br/>言語選定"] --> B["📚 基礎学習<br/>座学"]
+    B --> C["🛠️ 実践開発<br/>小規模プロジェクト"]
+    C --> D["🔍 実務知識習得<br/>SEO・セキュリティ"]
+    D --> E["🚀 継続学習<br/>毎日のコーディング"]
+    E --> F["💼 案件開発<br/>実績積み重ね"]
+    F --> G["🎓 独立・フリーランス<br/>キャリア確立"]
+
+    style A fill:#FFC107,stroke:#333,color:#333
+    style B fill:#9575CD,stroke:#333,color:#fff
+    style C fill:#009688,stroke:#333,color:#fff
+    style D fill:#4CAF50,stroke:#333,color:#fff
+    style E fill:#009688,stroke:#333,color:#fff
+    style F fill:#E91E63,stroke:#333,color:#fff
+    style G fill:#4CAF50,stroke:#333,color:#fff
+      </pre>
+    </section>
+
+    <!-- Testimonials Section - Detailed -->
+    <section class="section">
+      <h2>💬 参加者の詳細な感想と気づき</h2>
+
+      <div class="stat-box">
+        📊 セミナー参加者: 18名 | SNS紹介同意率: 83% (15名)
+      </div>
+
+      <div class="testimonial-grid">
+
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <h4>🎓 「バックボーンとキャリアが見えて、モチベーションが湧いた」</h4>
+          <div class="testimonial-content">
+            「新井さんのバックボーンとキャリアが分かり、とんでもない経験値を積んでることが今の成功に繋がってることがよく分かりました。自分もコツコツやろうと思えたセミナーでした。ありがとうございました！」
+          </div>
+          <div class="testimonial-meta">
+            <span class="profile-badge">40代・会社員</span>
+            <span>✅ SNS紹介同意</span>
+          </div>
+          <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+            <strong>ポイント：</strong> 講師の実体験が、参加者の学習意欲を引き出している。「すごい経験値」を目にすることで、「自分もできるかもしれない」という前向きなマインドセットが生まれている。
+          </p>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <h4>💡 「具体的な取り組み方が勉強になった」</h4>
+          <div class="testimonial-content">
+            「具体的なとりくみ方をいろいろ教えていただいたので勉強になりました。」
+          </div>
+          <div class="testimonial-meta">
+            <span class="profile-badge">50代・会社員</span>
+            <span>✅ SNS紹介同意</span>
+          </div>
+          <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+            <strong>ポイント：</strong> 理論だけでなく、<strong>実践的で具体的な方法論</strong>が求められていることが明白。年代を問わず、「どうやるのか」という実装方法へのニーズが高い。
+          </p>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <h4>📖 「勉強量に驚き、SEOや仕組みまで学べた」</h4>
+          <div class="testimonial-content">
+            「すごい勉強量で驚きました。SEOとか仕組の事までお話があり感心しました。」
+          </div>
+          <div class="testimonial-meta">
+            <span class="profile-badge">50代・個人事業主/フリーランス</span>
+            <span>✅ SNS紹介同意</span>
+          </div>
+          <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+            <strong>ポイント：</strong> 講師の<strong>継続的な学習と深い知識</strong>が「感心」を生んでいる。個人事業主層も参加しており、多様な層から信頼を得ている。SEO・セキュリティ・仕組み理解が、実務的な価値を提供していることが明らか。
+          </p>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="testimonial-card">
+          <h4>🔧 「SEOやセキュリティの面白い話が聞けた」</h4>
+          <div class="testimonial-content">
+            「SEOやセッキュリティなどの面白いお話が聞けてよかったです。」
+          </div>
+          <div class="testimonial-meta">
+            <span class="profile-badge">20代・会社員</span>
+            <span>❌ SNS紹介なし（運営改善のみ活用）</span>
+          </div>
+          <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+            <strong>ポイント：</strong> 若年層（20代）も参加。個別の技術トピックが「面白い」と評価され、興味を引いている。プライバシー配慮で紹介を控えているが、満足度は高い。
+          </p>
+        </div>
+
+        <!-- Testimonial 5 -->
+        <div class="testimonial-card">
+          <h4>🤔 「独学でエンジニアになれるか不安だったが、希望が見えた」</h4>
+          <div class="testimonial-content">
+            「独学でエンジニアになるが本当にできるのか？でも新井さんが今でも学習をしているとのことで、自分も頑張らなきゃと思いました。claude codeでの開発などのウェビナーなどもしていただけるといいなー。」
+          </div>
+          <div class="testimonial-meta">
+            <span class="profile-badge">40代・会社員</span>
+            <span>✅ SNS紹介同意</span>
+          </div>
+          <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+            <strong>ポイント：</strong> 参加前の<strong>不安を確信に変えている</strong>。講師の「今でも学習している」という発言が、参加者の「自分も頑張ろう」というマインドセット転換を促進。継続学習の重要性が体験を通じて伝わっている。さらに発展的な継続セミナーへのニーズも表現。
+          </p>
+        </div>
+
+        <!-- Testimonial 6 -->
+        <div class="testimonial-card">
+          <h4>🚀 「30代でも転身のチャンスがある、リアルな話が聞けた」</h4>
+          <div class="testimonial-content">
+            「新井さん、ありがとうございました。自分も30代中盤なので、まだエンジニアに転身するチャンスもあるかもとか思いながら見させていただきました。あんまりこうした転職のリアルな話って聞けないので非常に有意義でした。」
+          </div>
+          <div class="testimonial-meta">
+            <span class="profile-badge">30代・会社員</span>
+            <span>✅ SNS紹介同意</span>
+          </div>
+          <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+            <strong>ポイント：</strong> <strong>年代別の希望と現実性</strong>が伝わっている。「リアルな話が聞けないのが困っていた」という参加者の本当の課題を解決。30代での転身が「可能」であること、そして講師が30代で成功していることが、強い説得力を持っている。
+          </p>
+        </div>
+
+        <!-- Testimonial 7 -->
+        <div class="testimonial-card">
+          <h4>💪 「独学の大変さとレベルが理解できた」</h4>
+          <div class="testimonial-content">
+            「独学のレベルが凄くて、独立するのは大変なことがよくわかりました。ありがとうございました。」
+          </div>
+          <div class="testimonial-meta">
+            <span class="profile-badge">40代・会社員</span>
+            <span>✅ SNS紹介同意</span>
+          </div>
+          <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+            <strong>ポイント：</strong> 講師の「すごい勉強量」から、<strong>独学の本当の難しさと現実性</strong>が伝わっている。美化されていない、ありのままの道のりが見える。むしろ、その困難さを理解することで、参加者は自分の決断をより慎重かつ確実に進められる。
+          </p>
+        </div>
+
+        <!-- Testimonial 8 -->
+        <div class="testimonial-card">
+          <h4>😊 「若い！すばらしい！」</h4>
+          <div class="testimonial-content">
+            「新井さん、まだ30代だったんですね！若い！！すばらしいです。」
+          </div>
+          <div class="testimonial-meta">
+            <span class="profile-badge">50代・会社員</span>
+            <span>✅ SNS紹介同意</span>
+          </div>
+          <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+            <strong>ポイント：</strong> 年上世代からの<strong>好感度と信頼度の向上</strong>。講師が「実は若い」という意外性が、参加者の感情を揺さぶり、より強い印象を残す。年代を超えた共感と尊敬が生まれている。
+          </p>
+        </div>
+
+        <!-- Testimonial 9 -->
+        <div class="testimonial-card">
+          <h4>🔍 「ネット情報の玉石混淆を見分けるコツが得られた」</h4>
+          <div class="testimonial-content">
+            「ネットには色々な情報が溢れているので、実際の経歴やおすすめの言語を聞くことができて参考になりました。ありがとうございました。」
+          </div>
+          <div class="testimonial-meta">
+            <span class="profile-badge">30代・会社員</span>
+            <span>✅ SNS紹介同意</span>
+          </div>
+          <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+            <strong>ポイント：</strong> 講師の<strong>実体験に基づいた推奨言語や方法論</strong>が、参加者の「どの情報が正しいのか」という悩みを直接解決。権威のない情報社会における、<strong>実践者からの直接的なアドバイスの価値</strong>が高い。
+          </p>
+        </div>
+
+        <!-- Testimonial 10 -->
+        <div class="testimonial-card">
+          <h4>🎯 「目的明確化が肝心。挫折のパターンが理解できた」</h4>
+          <div class="testimonial-content">
+            「プログラミングを独学で容赦なく挫折する傾向が高いです、目的を明確にすることが肝心です」
+          </div>
+          <div class="testimonial-meta">
+            <span class="profile-badge">40代・派遣社員/契約社員</span>
+            <span>✅ SNS紹介同意</span>
+          </div>
+          <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+            <strong>ポイント：</strong> 参加者が自分の気づきを<strong>一般化されたメッセージ</strong として表現。講師の内容が、参加者の中で
